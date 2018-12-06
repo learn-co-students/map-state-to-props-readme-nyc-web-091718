@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import { connect } from 'react-redux';
 class App extends Component {
 
   handleOnClick() {
-    this.props.store.dispatch({
+    console.log(this.props);
+    
+    this.props.dispatch({
       type: 'INCREASE_COUNT',
     });
   }
@@ -20,5 +22,8 @@ class App extends Component {
     );
   }
 };
+const mapStateToProps = (state) => {
+  return { items: state.items };
+};
 
-export default App;
+export default connect(mapStateToProps)(App);
